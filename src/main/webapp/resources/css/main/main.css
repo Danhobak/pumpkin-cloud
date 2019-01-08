@@ -1,0 +1,92 @@
+body{
+	padding: 0;
+	margin: 0 auto;
+	background-color: #f9f9f9;
+}
+
+.main{
+	width:1600px;
+	height:auto;
+	display:inline-block;
+}
+.main_left{
+	float:left;
+	width:292px;
+	text-align: center;
+	border-right: 1px #ec6400 solid;
+}
+
+.main_right{
+	width:1307px;
+	float:right;
+}
+.top_navigator{
+	height: 32px;
+	background-color: #ec6400;
+	padding : 43px 20px 0 0;
+	text-align: right;
+	color: #f9f9f9;
+	font-size: 14px;
+}
+
+.main_logo_img{
+	padding: 28px 71px 71px 71px;
+}
+.user_id{
+	margin-bottom: 47px;
+}
+.snb{
+	margin-bottom: 284px;
+}
+
+.snb > img{
+	display: block;
+}
+
+.main_container{
+	padding: 10px 0 0 10px;
+}
+.main_container_top_btns{
+	display: inline-block;
+}
+
+.entity_outline_clicked{
+	background-color : #ec6400;
+	border:3px solid #ec6400;
+	border-radius: 10px;
+}
+.dir_clicked{
+	content : url(../../../resources/images/dir-img-selected.png);
+}
+.entity_outline_hover{
+	/* border:1px solid #ec6400;
+	 */
+	border-radius: 9px;
+	box-shadow: 2px 2px 2px 2px gray;
+}
+#dir_container{
+	display: inline-block;
+}
+
+div[id*="dir_"]{
+	display: inline-block;
+	margin: 10px;
+}
+
+div[id*="file_detail_"]{
+	display: inline-block;
+	margin: 10px;
+}
+
+h1{
+	margin: 10px;
+}
+
+#file { display:none; } 
+input[type="checkbox"] { display:none; }
+
+a{text-decoration : none; font-size: 14px;}
+a:link{color : #f9f9f9;}
+a:hover{color : #f9f9f9;}
+a:visited{color : #f9f9f9;}
+a:active{color : #f9f9f9;}

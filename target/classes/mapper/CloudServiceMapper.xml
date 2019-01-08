@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hobak.gurum.cloudservice.CloudServiceMapper">
+	<select id="getUserData" parameterType="String" resultType="CloudService">
+		SELECT UT_FILE_ID, UT_FILE_NAME, UT_FILE_SIZE, UT_FILE_REG_DATE
+			FROM UT_${param1} WHERE UT_FILE_PATH = #{param2}
+	</select>
+	
+	<insert id="uploadUserData" parameterType="hashmap">
+	INSERT INTO UT_${mid}(UT_FILE_ID, UT_FILE_NAME, UT_FILE_PATH, UT_FILE_SIZE, UT_FILE_REG_DATE) 
+			VALUES(SEQ_HG_BOARD_BID.nextval, #{csDTO.ut_file_name}, #{csDTO.ut_file_path}, ${csDTO.ut_file_size}, sysdate)
+	</insert>
+	
+	<delete id="deleteUserData" parameterType="hashmap">
+		DELETE FROM UT_${mid} 
+			WHERE UT_FILE_NAME = #{fileName} AND UT_FILE_PATH = #{path}
+	</delete>
+</mapper>
+
+<!--
+UT_FILE_ID       NOT NULL NUMBER        
+UT_FILENAME               VARCHAR2(100) 
+UT_FILE_PATH              VARCHAR2(500) 
+UT_FILESIZE               NUMBER        
+UT_FILE_REG_DATE          DATE       
+-->

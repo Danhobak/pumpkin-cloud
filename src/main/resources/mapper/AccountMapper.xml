@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hobak.gurum.account.AccountMapper">
+	<select id="loginCheck" parameterType="Account" resultType="int">
+		SELECT COUNT(*) FROM HG_MEMBER WHERE mid = #{mid} AND mpassword = #{mpassword}
+	</select>
+	
+	<insert id="joinMember" parameterType="Account">	<!-- macclock은 계정 활성여부를 말함 '1' 활성화, '0' 비활성화 -->
+		INSERT INTO HG_MEMBER(MID, MPASSWORD, MNAME, MPHONE, MEMAIL, MREGDATE, MACCLOCK) 
+			VALUES(#{mid},#{mpassword},#{mname},#{mphone},#{memail},sysdate,'1')
+	</insert>
+	
+	<select id="joinIdCheck" resultType="int">
+		SELECT COUNT(*) FROM HG_MEMBER WHERE mid = #{param1}	
+	</select>
+	
+	<update id="createUserTable" parameterType="map">
+		${create_table_query}
+	</update>
+	
+	<delete id="deleteMember" parameterType="String">
+		DELETE FROM HG_MEMBER WHERE mid = #{value}
+	</delete>
+	
+	<update id="dropUserTable" parameterType="map">
+		${drop_table_query}
+	</update>
+</mapper>
+
+<!-- 
+MID       NOT NULL VARCHAR2(50)  
+MPASSWORD          VARCHAR2(80)  
+MNAME              VARCHAR2(40)  
+MPHONE             VARCHAR2(40)  
+MEMAIL             VARCHAR2(100) 
+MREGDATE           DATE          
+MACCLOCK           VARCHAR2(1)   
+ -->

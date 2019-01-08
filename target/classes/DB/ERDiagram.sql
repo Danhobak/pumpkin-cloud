@@ -1,0 +1,88 @@
+
+/* Drop Triggers */
+
+DROP TRIGGER TRI_HG_BOARD_BID;
+
+
+
+/* Drop Tables */
+
+DROP TABLE HG_BOARD CASCADE CONSTRAINTS;
+DROP TABLE HG_MEMBER CASCADE CONSTRAINTS;
+
+
+
+/* Drop Sequences */
+
+DROP SEQUENCE SEQ_HG_BOARD_BID;
+
+
+
+
+/* Create Sequences */
+
+CREATE SEQUENCE SEQ_HG_BOARD_BID INCREMENT BY 1 START WITH 1;
+
+
+
+/* Create Tables */
+
+CREATE TABLE HG_BOARD
+(
+	BID number NOT NULL,
+	BTITLE varchar2(150),
+	BCONTENT varchar2(2000),
+	BFNAME varchar2(150),
+	BREGDATE date,
+	MID varchar2(50) NOT NULL,
+	PRIMARY KEY (BID)
+);
+
+
+CREATE TABLE HG_MEMBER
+(
+	MID varchar2(50) NOT NULL,
+	MPASSWORD varchar2(80),
+	MNAME varchar2(40),
+	MPHONE varchar2(40),
+	MEMAIL varchar2(100),
+	MREGDATE date,
+	-- 1 : true
+	-- 0 : false
+	MACCLOCK varchar2(1),
+	PRIMARY KEY (MID)
+);
+
+
+
+/* Create Foreign Keys */
+
+ALTER TABLE HG_BOARD
+	ADD FOREIGN KEY (MID)
+	REFERENCES HG_MEMBER (MID)
+;
+
+
+
+/* Create Triggers */
+
+CREATE OR REPLACE TRIGGER TRI_HG_BOARD_BID BEFORE INSERT ON HG_BOARD
+FOR EACH ROW
+BEGIN
+	SELECT SEQ_HG_BOARD_BID.nextval
+	INTO :new.BID
+	FROM dual;
+END;
+
+/
+
+
+
+
+/* Comments */
+
+COMMENT ON COLUMN HG_MEMBER.MACCLOCK IS '1 : true
+0 : false';
+
+
+

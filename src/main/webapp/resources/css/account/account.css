@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+
+body{
+	background: #f9f9f9;
+}
+
+.login_logo_container{
+	text-align: center; 
+	padding:55px 0 55px 0;
+}
+
+
+.input_field{
+	width: 459px;
+	height: 48px;
+	border: 1px #b4b4b4 solid;
+	text-indent: 25px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+
+
+
+form{
+	text-align: center;	
+}
+
+.login_line{
+	
+	margin:32px auto 16px auto;
+	width: 459px;
+	border: 1px #ec6400 solid;
+}
+
+.login_btn_container{
+	text-align: center;
+}
+
+
+a{font-size: 14px; bottom: 2px; }
+a:link{color : #ec6400;}
+a:hover{color : #ec6400;}
+a:visited{color : #ec6400;}
+a:active{color : #ec6400;}
+
+#login_id_input{
+	margin-bottom:10px;
+}
+
+
+/* 회원가입 관련 */
+.join_logo_container{
+	text-align: center;
+	padding-top: 55px;
+}
+
+.join_btn{
+	font-style: none;
+}
+
+.join_line{
+	width: 575px;
+	margin:24px auto 52px auto;
+	border: 1px #ec6400 solid;
+}
+.join_guid{
+	margin-bottom: 50px;	
+}
+.join_input_block{
+	margin-bottom : 14px;
+}
+
+.join_input_block img, .join_input_field{
+	vertical-align : middle;
+} 
+
+#join_id_input{
+	width:276px;
+}
+.join_input_field{
+	width: 414px;
+	height: 36px;
+	border: 1px #b4b4b4 solid;
+	text-indent: 20px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.join_btn{
+	margin: 17px 0 10px 0;
+}
