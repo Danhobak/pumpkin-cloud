@@ -16,6 +16,15 @@
 		DELETE FROM UT_${mid} 
 			WHERE UT_FILE_NAME = #{fileName} AND UT_FILE_PATH = #{path}
 	</delete>
+	
+	<select id="getFileSelect" parameterType="hashmap" resultType="CloudService">
+		SELECT * FROM (SELECT UT_FILE_NAME, UT_FILE_PATH, UT_FILE_SIZE, UT_FILE_REG_DATE,
+			SUBSTR(UT_FILE_NAME, -4) AS TYPE FROM UT_${mid}) 
+			WHERE TYPE IN
+			<foreach item="item" collection="typeArr" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+	</select>
 </mapper>
 
 <!--

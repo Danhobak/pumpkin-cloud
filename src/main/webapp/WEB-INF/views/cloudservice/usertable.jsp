@@ -34,7 +34,7 @@
 				<br>
 				<span id="file_name_${status.index}">${data.ut_file_name }</span>
 				<br>
-				<span id="file_size">${data.ut_file_size }</span>
+				<span id="file_size_${status.index}">${data.ut_file_size }</span>
 				<br>
 				<span>${data.ut_file_reg_date }</span>
 				<br>

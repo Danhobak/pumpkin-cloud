@@ -1,14 +1,6 @@
 
 $(function(){
 	
-	var sourceSwap = function () {
-		var $this = $(this);
-		var newSource = $this.data('alt-src');
-		$this.data('alt-src', $this.attr('src'));
-		$this.attr('src', newSource);
-	}
-	
-	
 	//클릭시 border값 및 checked로 상태 전환
 	$('#user_data_container').find('img[id!=dir_back_img]').click(function(){
 		if($(this).attr('id')=='dir_img'){
@@ -57,8 +49,6 @@ $(function(){
 	
 	/* 삭제 버튼 기능 */
 	$('#user_data_delete').click(function(){
-		
-		
 			var selectedItem = $('input[type=checkbox]:checked');
 			
 			if(selectedItem.length > 0){
@@ -69,7 +59,6 @@ $(function(){
 					var itemName = [];
 					for(var i=0; i < forLimit; i++){
 						itemName.push(selectedItem[i].value);
-						alert(selectedItem[i].value);
 					}
 					$.ajax({
 						type : 'POST',
@@ -120,6 +109,14 @@ $(function(){
 	$('#dir_back_img').dblclick(function(){
 		var dirName = $(this).parents().children(':eq(2)').text();
 		dirController(dirName, 0, "/moveDir");
+	});
+	
+	
+//---------------------------------------- SNB 관련 ---------------------------------------------------
+	$('img[id*=snb_]').click(function(){
+		var type = $(this).prop('id').substring(4);
+		
+		location.href='/typeSelect?type='+type;
 	});
 	
 	

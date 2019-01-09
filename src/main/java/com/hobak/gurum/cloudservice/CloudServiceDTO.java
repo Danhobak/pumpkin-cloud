@@ -2,6 +2,7 @@ package com.hobak.gurum.cloudservice;
 
 import java.sql.Date;
 
+
 public class CloudServiceDTO {
 	private int ut_file_id;
 	private String ut_file_name;

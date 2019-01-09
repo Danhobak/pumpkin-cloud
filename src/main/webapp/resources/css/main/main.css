@@ -1,15 +1,27 @@
+html{
+	height: 100%;
+}
+
 body{
+	width:100%;
+	height:100%;
 	padding: 0;
-	margin: 0 auto;
+	margin: 0;
 	background-color: #f9f9f9;
+	overflow: hidden;
 }
 
 .main{
-	width:1600px;
-	height:auto;
+	/* width:1600px; */
+	width : 100%;
+	min-height : 100%;
+	/* height:100%; */
 	display:inline-block;
 }
 .main_left{
+	min-height : 100%;
+	/* height : 100%; */
+	position : fixed;
 	float:left;
 	width:292px;
 	text-align: center;
@@ -17,10 +29,14 @@ body{
 }
 
 .main_right{
-	width:1307px;
+	/* width:1307px; */
+	width : calc(100% - 293px);
+	/* height : 100%; */
 	float:right;
 }
 .top_navigator{
+	margin : 0;
+	/* width : calc(100% - 293px); */
 	height: 32px;
 	background-color: #ec6400;
 	padding : 43px 20px 0 0;
@@ -36,7 +52,7 @@ body{
 	margin-bottom: 47px;
 }
 .snb{
-	margin-bottom: 284px;
+	margin-bottom: calc(100%-501px);
 }
 
 .snb > img{

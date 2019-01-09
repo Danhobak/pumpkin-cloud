@@ -10,5 +10,7 @@ public interface CloudServiceMapper {
 	public int uploadUserData(Map<String, Object> map);
 	
 	public int deleteUserData(HashMap<String, Object> map);
+	
+	public List<CloudServiceDTO> getFileSelect(Map<String, Object> map);
 }
 	

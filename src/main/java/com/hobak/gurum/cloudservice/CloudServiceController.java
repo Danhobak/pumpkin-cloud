@@ -35,6 +35,7 @@ public class CloudServiceController {
 		System.out.println("mainGet");
 		System.out.println("userPath : "+userPath);
 		cloudServiceDAO.getUserData(request, model, mid, userPath);
+		
 		return "main/main";
 	}
 	
@@ -99,5 +100,15 @@ public class CloudServiceController {
 		}
 		cloudServiceDAO.moveDir(request, temp_depth, trigger);
 		return "redirect:/main";
+	}
+	
+	@RequestMapping(value = "/typeSelect", method = RequestMethod.GET)
+	public String userFileSelect(Model model, HttpServletRequest request) {
+		String mid = (String)request.getSession().getAttribute("sessionMid");
+		String type = request.getParameter("type");
+		
+		cloudServiceDAO.fileTypeSelector(model, mid, type);
+		
+		return "main/main";
 	}
 }

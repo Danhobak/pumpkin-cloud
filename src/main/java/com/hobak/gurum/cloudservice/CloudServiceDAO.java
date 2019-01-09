@@ -3,6 +3,7 @@ package com.hobak.gurum.cloudservice;
 import java.io.File;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,7 +63,7 @@ public class CloudServiceDAO {
 		model.addAttribute("userDataSize", userData.size());
 		model.addAttribute("nowPath", displayPath);
 		model.addAttribute("isDefaultPath", flag);
-		model.addAttribute("urlPath", "/");
+		model.addAttribute("pageUrl", "usertable");
 	}
 	
 	/*
@@ -258,5 +259,39 @@ public class CloudServiceDAO {
 			}
 			request.getSession().setAttribute("nowPath", backPath);
 		}
+	}
+	
+	public void fileTypeSelector(Model model, String mid, String type) {
+		// 파일 type별 분류 참조 : http://sjava.net/2014/10/%ED%8C%8C%EC%9D%BC-%ED%83%80%EC%9E%85%EB%B3%84-%ED%99%95%EC%9E%A5%EC%9E%90-%EB%B6%84%EB%A5%98/
+		List<String> typeArr = new ArrayList<String>();
+		String imgType = ".bmp, .cr2, .gif, .ico, .ithmb, .jpeg, .jpg, .nef, .png, .raw, .svg, .tif, .tiff, .wbmp, .webp";
+		String videoType = ".3g2, .3gp, .3gpp, .3gpp2, .asf, .avi, .dv, .dvi, .flv, .m2t, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .ogv, .ogx, .rm, .rmvb, .ts, .vob, .webm, .wmv";
+		String docType = ".hwp, .csv, .doc, .dochtml, .docm, .docx, .docxml, .dot, .dothtml, .dotm, .dotx, .eps, .fdf, .key, .keynote, .kth, .mpd, .mpp, .mpt, .mpx, .nmbtemplate, .numbers, .odc, .odg, .odp, .ods, .odt, .pages, .pdf, .pdfxml, .pot, .pothtml, .potm, .potx, .ppa, .ppam, .pps, .ppsm, .ppsx, .ppt, .ppthtml, .pptm, .pptx, .pptxml, .prn, .ps, .pwz, .rtf, .tab, .template, .tsv, .txt, .vdx, .vsd, .vss, .vst, .vsx, .vtx, .wbk, .wiz, .wpd, .wps, .xdf, .xdp, .xlam, .xll, .xlr, .xls, .xlsb, .xlsm, .xlsx, .xltm, .xltx, .xps";
+		String displayType = "";
+		Map<String, Object> sqlMap = new HashMap<String, Object>();
+		
+		System.out.println("SNB > "+type+" 선택됨");
+		sqlMap.put("mid", mid);
+		
+		if(type.equals("photo")) {
+			typeArr = Arrays.asList(imgType.replaceAll("\\s", "").split(","));
+			displayType = "사진";
+		}else if(type.equals("video")) {
+			typeArr = Arrays.asList(videoType.replaceAll("\\s", "").split(","));
+			displayType = "동영상";
+		}else if(type.equals("doc")) {
+			typeArr = Arrays.asList(docType.replaceAll("\\s", "").split(","));
+			displayType = "문서";
+		}
+		
+		sqlMap.put("typeArr", typeArr);
+		
+		List<CloudServiceDTO> userData = sqlSession.getMapper(CloudServiceMapper.class).getFileSelect(sqlMap);
+		
+		
+		model.addAttribute("userData", userData);
+		model.addAttribute("userDataSize", userData.size());
+		model.addAttribute("type", displayType);
+		model.addAttribute("pageUrl", "typeSelect");
 	}
 }

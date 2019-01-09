@@ -32,9 +32,9 @@
 			</div>
 			<div class="user_id">${sessionMid}님</div>
 			<div class="snb">
-				<img alt="snb_photo" class="snb_photo" data-alt-src="/resources/images/snb_photo_over.jpg" src="/resources/images/snb_photo.jpg">
-				<img alt="snb_video" class="snb_video" data-alt-src="/resources/images/snb_video_over.jpg" src="/resources/images/snb_video.jpg">
-				<img alt="snb_doc" class="snb_doc" data-alt-src="/resources/images/snb_doc_over.jpg" src="/resources/images/snb_doc.jpg">
+				<img alt="snb_photo" id="snb_photo" class="snb_photo" data-alt-src="/resources/images/snb_photo_over.jpg" src="/resources/images/snb_photo.jpg">
+				<img alt="snb_video" id="snb_video" class="snb_video" data-alt-src="/resources/images/snb_video_over.jpg" src="/resources/images/snb_video.jpg">
+				<img alt="snb_doc" id="snb_doc" class="snb_doc" data-alt-src="/resources/images/snb_doc_over.jpg" src="/resources/images/snb_doc.jpg">
 			</div>
 		</div>
 		<div class="main_right">
@@ -42,18 +42,27 @@
 				<span><a href="/leaveMember">회원탈퇴</a> | <a href="/logout">로그아웃</a></span>
 			</div>
 			<div class="main_container">
+				<c:choose>
+				<c:when test="${pageUrl=='usertable'}">
 					<div class="main_container_top_btns">
 						<button id="mk_user_dir">폴더 생성</button>
-				<form id="fileUpload" action="/upload" method="post" enctype="multipart/form-data">
+					<form id="fileUpload" action="/upload" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="dir_depth" id="dir_depth" value="">
 						<input multiple="multiple" type="file" name="file" id="file">		
 						<button id="user_upload">업로드</button>
-				</form>
+					</form>
 						<button id="user_download">다운로드</button>
 						<button id="user_data_delete">삭제</button>
 					</div>
-				<hr>
-				<c:import url="../cloudservice/usertable.jsp"/>
+					<hr>
+						<c:import url="../cloudservice/usertable.jsp"/>
+				</c:when>
+				<c:when test="${pageUrl=='typeSelect'}">
+						<button id="user_download">다운로드</button>
+						<button id="user_data_delete">삭제</button>
+						<c:import url="../cloudservice/typeselect.jsp"/>
+				</c:when>
+				</c:choose>
 			</div>
 		</div>
 	</div>
