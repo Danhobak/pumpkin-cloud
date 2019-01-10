@@ -5,6 +5,8 @@ $(function(){
 	$('#user_data_container').find('img[id!=dir_back_img]').click(function(){
 		if($(this).attr('id')=='dir_img'){
 			$(this).toggleClass('dir_clicked');
+		}else if($(this).attr('id')=='file_img'){
+			$(this).toggleClass('file_clicked');
 		}else{
 			$(this).parent().toggleClass("entity_outline_clicked");
 		}

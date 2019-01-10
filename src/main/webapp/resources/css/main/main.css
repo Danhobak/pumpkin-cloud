@@ -48,7 +48,8 @@ body{
 .main_logo_img{
 	padding: 28px 71px 71px 71px;
 }
-.user_id{
+
+.user_menu{
 	margin-bottom: 47px;
 }
 .snb{
@@ -62,10 +63,14 @@ body{
 .main_container{
 	padding: 10px 0 0 10px;
 }
-.main_container_top_btns{
+.main_container_top_btns > div {
+	cursor : pointer;
 	display: inline-block;
 }
-
+.main_container_top_btns > form {
+	cursor : pointer;
+	display: inline-block;
+}
 .entity_outline_clicked{
 	background-color : #ec6400;
 	border:3px solid #ec6400;
@@ -73,6 +78,10 @@ body{
 }
 .dir_clicked{
 	content : url(../../../resources/images/dir-img-selected.png);
+}
+
+.file_clicked{
+	content : url(../../../resources/images/file-img-selected.png);
 }
 .entity_outline_hover{
 	/* border:1px solid #ec6400;
@@ -92,6 +101,23 @@ div[id*="dir_"]{
 div[id*="file_detail_"]{
 	display: inline-block;
 	margin: 10px;
+	text-indent : 5px;
+}
+
+span[id*=dir_name_]{
+	display : inline-block;
+	width : 165px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+span[id*=file_]{
+	display : inline-block;
+	width : 165px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 h1{
@@ -102,7 +128,7 @@ h1{
 input[type="checkbox"] { display:none; }
 
 a{text-decoration : none; font-size: 14px;}
-a:link{color : #f9f9f9;}
-a:hover{color : #f9f9f9;}
-a:visited{color : #f9f9f9;}
-a:active{color : #f9f9f9;}
+a:link{color : #888888;}
+a:hover{color : #888888;}
+a:visited{color : #888888;}
+a:active{color : #888888;}

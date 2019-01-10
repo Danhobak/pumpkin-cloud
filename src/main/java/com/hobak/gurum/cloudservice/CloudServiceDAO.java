@@ -148,7 +148,6 @@ public class CloudServiceDAO {
 			}
 		}
 	}
-	
 	/*
 	 * deleteAllFiles
 	 * 디렉토리의 내용을 전부 삭제하는 재귀용 함수
@@ -209,7 +208,6 @@ public class CloudServiceDAO {
 			}
 			creatfileName = file.getName();
 		}
-		
 		
 		System.out.println("다운로드 ↓↓↓");
 		System.out.println(path+"\\"+creatfileName);

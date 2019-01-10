@@ -31,6 +31,9 @@
 				<img alt="main_profile_img" src="/resources/images/main_profile_img.jpg">
 			</div>
 			<div class="user_id">${sessionMid}님</div>
+			<div class="user_menu">
+				<a href="/leaveMember">회원탈퇴</a> | <a href="/logout">로그아웃</a>
+			</div>
 			<div class="snb">
 				<img alt="snb_photo" id="snb_photo" class="snb_photo" data-alt-src="/resources/images/snb_photo_over.jpg" src="/resources/images/snb_photo.jpg">
 				<img alt="snb_video" id="snb_video" class="snb_video" data-alt-src="/resources/images/snb_video_over.jpg" src="/resources/images/snb_video.jpg">
@@ -38,28 +41,36 @@
 			</div>
 		</div>
 		<div class="main_right">
-			<div class="top_navigator">
+			<!-- <div class="top_navigator">
 				<span><a href="/leaveMember">회원탈퇴</a> | <a href="/logout">로그아웃</a></span>
-			</div>
+			</div> -->
 			<div class="main_container">
 				<c:choose>
 				<c:when test="${pageUrl=='usertable'}">
 					<div class="main_container_top_btns">
-						<button id="mk_user_dir">폴더 생성</button>
+						<div>
+							<img src="/resources/images/btn_new.png" id="mk_user_dir" width="129" height="129">
+						</div>
 					<form id="fileUpload" action="/upload" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="dir_depth" id="dir_depth" value="">
-						<input multiple="multiple" type="file" name="file" id="file">		
-						<button id="user_upload">업로드</button>
+						<input multiple="multiple" type="file" name="file" id="file">
+						<div>
+							<img src="/resources/images/btn_upload.png" id="user_upload" width="129" height="129">
+						</div>		
 					</form>
-						<button id="user_download">다운로드</button>
-						<button id="user_data_delete">삭제</button>
+						<div>
+							<img src="/resources/images/btn_download.png" id="user_download" width="129" height="129">
+						</div>
+						<div>
+							<img src="/resources/images/btn_delete.png" id="user_data_delete" width="129" height="129">
+						</div>
 					</div>
 					<hr>
 						<c:import url="../cloudservice/usertable.jsp"/>
 				</c:when>
 				<c:when test="${pageUrl=='typeSelect'}">
-						<button id="user_download">다운로드</button>
-						<button id="user_data_delete">삭제</button>
+						<img src="/resources/images/btn_download.png" id="user_download" width="129" height="129">
+						<img src="/resources/images/btn_delete.png" id="user_data_delete" width="129" height="129">
 						<c:import url="../cloudservice/typeselect.jsp"/>
 				</c:when>
 				</c:choose>

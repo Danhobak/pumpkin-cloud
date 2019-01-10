@@ -30,13 +30,13 @@
 		<form id="file_detail_form">
 		<c:forEach var="data" items="${userData}" varStatus="status">
 			<div id="file_detail_${status.index}">
-				<img src="resources/images/test-img.jpg" width="100" height="80"  id="file_img">
+				<img src="resources/images/file-img.png" width="165" height="164"  id="file_img">
 				<br>
 				<span id="file_name_${status.index}">${data.ut_file_name }</span>
 				<br>
 				<span id="file_size_${status.index}">${data.ut_file_size }</span>
 				<br>
-				<span>${data.ut_file_reg_date }</span>
+				<span id="file_regdate">${data.ut_file_reg_date }</span>
 				<br>
 				<input type="checkbox" name="checkbox_file_${status.index}" value="${data.ut_file_name }" class="user_data_checkbox">
 			</div>
